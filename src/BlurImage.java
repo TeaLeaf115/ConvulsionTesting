@@ -1,5 +1,5 @@
 // *********************************************************************
-// BlurImage.java	Author: Owen Barnes			Version: 1.0 (xx/xx/xx)
+// BlurImage.java
 // 
 // This class will have all the functionality to take in an image as a
 // parameter and output a blurred version of the image.
