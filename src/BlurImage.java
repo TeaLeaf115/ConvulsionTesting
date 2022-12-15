@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import java.io.*;
+import java.util.Arrays;
 import javax.imageio.ImageIO;
 
 
@@ -70,13 +71,13 @@ public class BlurImage
 
     public void blur()
     {
-        // loop for each pixel
+        // loop for each main pixel
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
                 //
-                float avgR = 0.0F, avgG = 0.0F, avgB = 0.0F, R, G, B;
+                float avgR = 0.0F, avgG = 0.0F, avgB = 0.0F;
 
 				/*
 					rgbList[x-1][y-1]
@@ -94,41 +95,52 @@ public class BlurImage
                 {
                     for (int i = -1; i <= 1; i++)
                     {
-                        // Janky way to handle any 'ArrayIndexOutOfBoundsException'.
-                        try
-                        {
-                            Color c = new Color(image.getRGB(x+i, y+j));
-//                            System.out.println(c + " Image Location: (" + x + ", " + y + ") i & j Locations: (" + i + ", " + j + ")");
-//                            if (i == 0 && j == 0) {
-//                                System.out.println("main pixel at (" + x + ", " + y + ")");
-//                            }
+                        System.out.println(x+"   "+y+"   "+i+"   "+j);
+                        float[] avgRGB = avgRGBFinder(x, y, i, j);
+                        System.out.println(Arrays.toString(avgRGB));
 
-                            avgR += rgbToConvolutedDecimal(c.getRed(), x+i, y+j);
-                            System.out.println("I made it here!!!!");
-                            avgG += rgbToConvolutedDecimal(c.getGreen(), x+i, y+j);
-                            avgB += rgbToConvolutedDecimal(c.getBlue(), x+i, y+j);
-//                            System.out.println("avgR: " + avgR + " avgG: " + avgG + " avgB: " + avgB);
-                        }
-                        catch(Exception ArrayIndexOutOfBoundsException){
-                            System.out.println("AIOoBE");
-                        }
+                        avgR += avgRGB[0];
+                        avgG += avgRGB[1];
+                        avgB += avgRGB[2];
                     }
                 }
+
                 Color avgColor = new Color(avgR, avgG, avgB);
-//                System.out.println(avgColor);
+                System.out.println(avgColor);
                 blurredImg.setRGB(x, y, avgColor.getRGB());
 
-                System.out.println();
-            }
+//                System.out.println();
+        }
 //            System.out.println("X: " + x);
 
         }
         toImage();
     }
 
+    public float[] avgRGBFinder(int x, int y, int i, int j)
+    {
+        float[] avgRGB = new float[3];
+
+        if (x+i == -1 || x+i > width || y+j == -1 || y+j > height)
+        {
+            return new float[]{0.0F, 0.0F, 0.0F};
+        }
+//        System.out.println(x+"   "+ y);
+        Color c = new Color(image.getRGB(x + i, y + j));
+
+        avgRGB[0] = rgbToConvolutedDecimal(c.getRed(), x + i, y + j);
+//        System.out.println("I made it here!!!!");
+        avgRGB[1] = rgbToConvolutedDecimal(c.getGreen(), x + i, y + j);
+        avgRGB[2] = rgbToConvolutedDecimal(c.getBlue(), x + i, y + j);
+
+
+        return avgRGB;
+    }
+
     public float rgbToConvolutedDecimal(int colorVal, int xPos, int yPos)
     {
-        System.out.println((colorVal/255.0F) * CONVOLUTION_MULTI_CENTER[xPos][yPos]);
+//        System.out.println(xPos+"   "+ yPos);
+//        System.out.println((colorVal/255.0F) * CONVOLUTION_MULTI_CENTER[xPos][yPos]);
         return (colorVal/255.0F) * CONVOLUTION_MULTI_CENTER[xPos][yPos];
     }
 
