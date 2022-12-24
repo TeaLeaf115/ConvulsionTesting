@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45c0d3d1-9655-4267-815b-3a589dbd452e" name="Changes" comment="Stuff added">
+    <list default="true" id="45c0d3d1-9655-4267-815b-3a589dbd452e" name="Changes" comment="Trying to fix stupid bugs, still needs work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BlurImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BlurImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.jpeg_blurred.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.jpeg_blurred.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/test.jpeg_blurred.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +67,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670878836839</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Trying to fix stupid bugs, still needs work">
+      <created>1671112545063</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1671112545063</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Trying to fix stupid bugs, still needs work">
+      <created>1671112633528</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671112633528</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -82,7 +97,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Stuff added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stuff added" />
+    <MESSAGE value="Trying to fix stupid bugs, still needs work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to fix stupid bugs, still needs work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

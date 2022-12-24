@@ -95,9 +95,9 @@ public class BlurImage
                 {
                     for (int i = -1; i <= 1; i++)
                     {
-                        System.out.println(x+"   "+y+"   "+i+"   "+j);
+//                        System.out.println(x+"   "+y+"   "+i+"   "+j);
                         float[] avgRGB = avgRGBFinder(x, y, i, j);
-                        System.out.println(Arrays.toString(avgRGB));
+//                        System.out.println(Arrays.toString(avgRGB));
 
                         avgR += avgRGB[0];
                         avgG += avgRGB[1];
@@ -106,7 +106,7 @@ public class BlurImage
                 }
 
                 Color avgColor = new Color(avgR, avgG, avgB);
-                System.out.println(avgColor);
+//                System.out.println(avgColor);
                 blurredImg.setRGB(x, y, avgColor.getRGB());
 
 //                System.out.println();
@@ -121,17 +121,17 @@ public class BlurImage
     {
         float[] avgRGB = new float[3];
 
-        if (x+i == -1 || x+i > width || y+j == -1 || y+j > height)
+        if (x+i == -1 || x+i >= width || y+j == -1 || y+j >= height)
         {
             return new float[]{0.0F, 0.0F, 0.0F};
         }
 //        System.out.println(x+"   "+ y);
         Color c = new Color(image.getRGB(x + i, y + j));
 
-        avgRGB[0] = rgbToConvolutedDecimal(c.getRed(), x + i, y + j);
+        avgRGB[0] = rgbToConvolutedDecimal(c.getRed(), 1 + i, 1 + j);
 //        System.out.println("I made it here!!!!");
-        avgRGB[1] = rgbToConvolutedDecimal(c.getGreen(), x + i, y + j);
-        avgRGB[2] = rgbToConvolutedDecimal(c.getBlue(), x + i, y + j);
+        avgRGB[1] = rgbToConvolutedDecimal(c.getGreen(), 1 + i, 1 + j);
+        avgRGB[2] = rgbToConvolutedDecimal(c.getBlue(), 1 + i, 1 + j);
 
 
         return avgRGB;
